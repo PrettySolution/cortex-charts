@@ -4,5 +4,5 @@ target-branch: main
 chart-dirs:
   - charts
 chart-repos:
-  - cortex=https://helm-charts.cortexanalytics.com/
+  - cortex=https://helm-charts.cortexanalytics.com
 helm-extra-args: --timeout 600s
