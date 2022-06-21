@@ -1,1 +1,3 @@
-semver-helm-chart test
+#### Cortex Helm Charts
+maintainers:
+ - vherman@vf-soft.com
