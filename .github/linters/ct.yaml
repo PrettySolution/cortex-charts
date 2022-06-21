@@ -4,5 +4,5 @@ target-branch: main
 chart-dirs:
   - charts
 chart-repos:
-  - cortex=https://prettysolution.github.io/semver-helm-chart
+  - cortex=https://helm-charts.cortexanalytics.com/
 helm-extra-args: --timeout 600s
