@@ -11,11 +11,6 @@ cortex_app:
   OAUTH2_PROXY_CLIENT_ID: ""
 
   image:
-    camunda:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-camunda:7.15.14"
-    cortex_cli:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-cli:1.3.93"
-      pullPolicy: Always
     cortex_admin:
       repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-admin:2.3.189"
     cortex_api:
