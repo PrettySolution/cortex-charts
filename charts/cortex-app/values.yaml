@@ -1,45 +1,44 @@
-
 cortex_app:
   deploy:
     sha: "sha1"
 
-  lisenceLic: "PExpY2Vuc2U+CiAgPElkPmUwNTkyMDA5LTliYTMtNDBkNS1iODdmLTU2MzAyNzFkMTA1YjwvSWQ+CiAgPFR5cGU+U3RhbmRhcmQ8L1R5cGU+CiAgPEV4cGlyYXRpb24+VGh1LCAyNyBPY3QgMjAyMiAwOTo0OToxMiBHTVQ8L0V4cGlyYXRpb24+CiAgPFF1YW50aXR5PjU8L1F1YW50aXR5PgogIDxQcm9kdWN0RmVhdHVyZXM+CiAgICA8RmVhdHVyZSBuYW1lPSJBQ0cgTW9kdWxlIj55ZXM8L0ZlYXR1cmU+CiAgICA8RmVhdHVyZSBuYW1lPSJDRFBTIE1vZHVsZSI+eWVzPC9GZWF0dXJlPgogICAgPEZlYXR1cmUgbmFtZT0iTWF4aW11bSBMaWZlcyI+MTAwMDA8L0ZlYXR1cmU+CiAgICA8RmVhdHVyZSBuYW1lPSJPcHMgTWFuYWdlciI+eWVzPC9GZWF0dXJlPgogICAgPEZlYXR1cmUgbmFtZT0iUVVBTElUWSBNb2R1bGUiPm5vPC9GZWF0dXJlPgogIDwvUHJvZHVjdEZlYXR1cmVzPgogIDxDdXN0b21lcj4KICAgIDxOYW1lPkxvY3dpc2UgVGVjaG5vbG9naWVzPC9OYW1lPgogICAgPEVtYWlsPnNpb24uY29oZW5AbG9jd2lzZS5jb208L0VtYWlsPgogIDwvQ3VzdG9tZXI+CiAgPFNpZ25hdHVyZT5NRVlDSVFDT25sejA2ZHJVR09mSmpwM0I2SjBEaDN0dktmZGJjUUlCOUlXaXBjNjlpUUloQU1xUDFwZGVaZTFzYlRtem5wb0dvczkwclNuenBzODR0VFZGY1NENUh5VVM8L1NpZ25hdHVyZT4KPC9MaWNlbnNlPgo="
+  lisenceLic: ""
 
-  dnsZone: ""  # pretty-solution.com
+  dnsZone: ""
 
-  OIDC_ISSUER_URL: ""  # https://cognito-idp.us-east-1.amazonaws.com/us-east-1_Bb7Xtr6Hp
-  OIDC_JWKS_URI: ""  # https://cognito-idp.us-east-1.amazonaws.com/us-east-1_Bb7Xtr6Hp/.well-known/jwks.json
-  OAUTH2_PROXY_CLIENT_ID: ""  # 6mlrlodh5hjc4ch3hq5kdoohem
+  OIDC_ISSUER_URL: ""
+  OIDC_JWKS_URI: ""
+  OAUTH2_PROXY_CLIENT_ID: ""
 
   image:
     camunda:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-camunda:master"
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-camunda:7.15.14"
     cortex_cli:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-cli:development"
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-cli:1.3.93"
       pullPolicy: Always
     cortex_admin:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-admin:development"
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-admin:2.3.189"
     cortex_api:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-api:development"
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-api:1.3.2"
     cortex_qm:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-qm:basic_auth"
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-qm:2.2.11"
     cortex_ui:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-ui:development"
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-ui:1.2.342"
 
   env:
 
     ASPNETCORE_ENVIRONMENT: "Production"
-    ConnectionStrings__BaseClientConnection: "Data Source=cortexdev-mssqlserver.cgwiej49vfdx.eu-central-1.rds.amazonaws.com,1433;TrustServerCertificate=True;Initial Catalog=ClientEX;User ID=cortexdev_admin;Password=9Rp4s@zu5K;Connection Timeout=32400;"
-    ConnectionStrings__MasterConnection: "Data Source=cortexdev-mssqlserver.cgwiej49vfdx.eu-central-1.rds.amazonaws.com,1433;TrustServerCertificate=True;Initial Catalog=Cortex;User ID=cortexdev_admin;Password=9Rp4s@zu5K;"
-    ConnectionStrings__DeploymentConnection: "Data Source=cortexdev-mssqlserver.cgwiej49vfdx.eu-central-1.rds.amazonaws.com,1433;TrustServerCertificate=True;Initial Catalog=ClientEX;User ID=cortexdev_admin;Password=9Rp4s@zu5K;Connection Timeout=32400;"
-    ConnectionStrings__AdminConnection: "Data Source=cortexdev-mssqlserver.cgwiej49vfdx.eu-central-1.rds.amazonaws.com,1433;TrustServerCertificate=True;Initial Catalog=CortexAdmin;User ID=cortexdev_admin;Password=9Rp4s@zu5K;"
+    ConnectionStrings__BaseClientConnection: ""
+    ConnectionStrings__MasterConnection: ""
+    ConnectionStrings__DeploymentConnection: ""
+    ConnectionStrings__AdminConnection: ""
     Camunda__CamundaService: "http://camunda-service.camunda.svc.cluster.local:8080"
 
     DB_TYPE: "mssql"
-    DB_USER: "cortexdev_admin"
-    DB_PASSWORD: "9Rp4s@zu5K"
-    DB_NAME: "qisim_with_ui_2"
-    DB_HOST: "cortexdev-mssqlserver.cgwiej49vfdx.eu-central-1.rds.amazonaws.com"
+    DB_USER: ""
+    DB_PASSWORD: ""
+    DB_NAME: ""
+    DB_HOST: ""
     DB_IP_A: ""  # for debugging purpose only
     DB_PORT: 1433
     Cognito__region: ""
