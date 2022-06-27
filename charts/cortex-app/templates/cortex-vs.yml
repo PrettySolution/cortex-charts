@@ -1,0 +1,98 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: cortex-vs
+spec:
+  hosts:
+    - {{.Values.cortex_app.dnsZone}}
+  gateways:
+    - istio-ingress/ingressgateway
+  http:
+
+    - match:
+        - uri:
+            prefix: /oauth2/userinfo
+      route:
+        - destination:
+            host: oauth2-proxy.oauth2-proxy.svc.cluster.local
+            port:
+              number: 4180
+
+    - route:
+        - destination:
+            host: cortex-api-service.cortex-api.svc.cluster.local
+            port:
+              number: 80
+      match:
+        - uri:
+            exact: /api/v1/Admin/health
+
+    - route:
+        - destination:
+            host: cortex-admin-service
+            port:
+              number: 80
+      match:
+        - uri:
+            prefix: /api/
+      #timeout: 2s  # upstream request timeout for /api/executions/brightDB/commonerrors
+
+    - route:
+        - destination:
+            host: whoami-service
+            port:
+              number: 80
+      match:
+        - uri:
+            prefix: /whoami/
+      rewrite:
+        uri: /
+
+    - route:
+        - destination:
+            host: cortex-qm-service
+            port:
+              number: 8088
+      match:
+        - uri:
+            prefix: /qmm/
+      rewrite:
+        uri: /api/
+
+    - route:
+        - destination:
+            host: camunda-service.camunda.svc.cluster.local
+            port:
+              number: 8080
+      match:
+        - uri:
+            prefix: /camunda/
+
+    - route:
+        - destination:
+            host: tableau.external
+            port:
+              number: 80
+      match:
+        - uri:
+            prefix: /trusted/
+        - uri:
+            prefix: /views/
+        - uri:
+            prefix: /vizql/
+        - uri:
+            prefix: /sidecar/
+        - uri:
+            prefix: /vizportal/
+    #      timeout: 5s
+
+
+    - route:
+        - destination:
+            host: cortex-ui-service
+            port:
+              number: 80
+      headers:
+        response:
+          add:
+            cache-control: "no-cache"

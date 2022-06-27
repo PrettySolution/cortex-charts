@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whoami
+  labels:
+    app: whoami
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whoami
+  template:
+    metadata:
+      labels:
+        sidecar.istio.io/inject: "true"
+        app: whoami
+        sha: {{.Values.cortex_app.deploy.sha}}
+    spec:
+      containers:
+        - name: nginx
+          imagePullPolicy: Always
+          image: containous/whoami
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami-service # a random name
+spec:
+  selector:  # to connect to Pod through label
+    app: whoami
+  ports:
+    - port: 80  # service port
+      name: http-web
+      protocol: TCP
+      targetPort: 80  # container port

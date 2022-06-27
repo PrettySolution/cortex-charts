@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cortex-admin-env-vars-configmap
+  labels:
+    sha: {{.Values.cortex_app.deploy.sha}}
+data:
+  ConnectionStrings__BaseClientConnection: {{.Values.cortex_app.env.ConnectionStrings__BaseClientConnection}}
+  ConnectionStrings__MasterConnection: {{.Values.cortex_app.env.ConnectionStrings__MasterConnection}}
+  ConnectionStrings__DeploymentConnection: {{.Values.cortex_app.env.ConnectionStrings__DeploymentConnection}}
+  ConnectionStrings__AdminConnection: {{.Values.cortex_app.env.ConnectionStrings__AdminConnection}}
+  Camunda__CamundaService: {{.Values.cortex_app.env.Camunda__CamundaService}}
+  Cognito__region: {{.Values.cortex_app.env.Cognito__region}}
+  Cognito__userPoolId: {{.Values.cortex_app.env.Cognito__userPoolId}}
+  Cognito__appClientId: {{.Values.cortex_app.env.Cognito__appClientId}}

@@ -1,0 +1,46 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: cortex-app-auth-policy
+spec:
+  action: CUSTOM
+  provider:
+    name: oauth2-proxy
+  rules:
+    - {}
+---
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: user-pool
+spec:
+  jwtRules:
+    - issuer: {{.Values.cortex_app.OIDC_ISSUER_URL}}  # $OIDC_ISSUER_URL
+      jwksUri: {{.Values.cortex_app.OIDC_JWKS_URI}}  # $OIDC_JWKS_URI
+      forwardOriginalToken: true
+      outputPayloadToHeader: x-jwt-trusted-payload
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: user-pool-app-public-client
+spec:
+  rules:
+    - when:
+        - key: request.auth.audiences
+          values:
+            - {{.Values.cortex_app.OAUTH2_PROXY_CLIENT_ID}}  # $CLIENT_ID
+        - key: request.auth.claims[iss]
+          values:
+            - {{.Values.cortex_app.OIDC_ISSUER_URL}}  # $OIDC_ISSUER_URL
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-swagger
+spec:
+  action: ALLOW
+  rules:
+    - to:
+        - operation:
+            paths: [ "/swagger*" ]

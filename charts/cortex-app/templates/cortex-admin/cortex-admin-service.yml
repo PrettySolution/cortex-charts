@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cortex-admin-service
+spec:
+  selector:  # to connect to Pod through label
+    app: cortex-admin
+  ports:
+    - port: 80  # service port
+      name: http-web
+      protocol: TCP
+      targetPort: http  # container port

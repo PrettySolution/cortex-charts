@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cortex-ui-deployment
+  labels:
+    app: cortex-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cortex-ui
+  template:
+    metadata:
+      labels:
+        sidecar.istio.io/inject: "true"
+        app: cortex-ui
+        sha: {{.Values.cortex_app.deploy.sha}}
+    spec:
+      containers:
+        - name: cortex-ui
+          imagePullPolicy: Always
+          image: {{.Values.cortex_app.image.cortex_ui.repository}}
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d/default.conf
+              subPath: default.conf
+              name: nginx-config
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: cortex-ui-configmap
+            items:
+              - key: nginx.conf
+                path: default.conf
