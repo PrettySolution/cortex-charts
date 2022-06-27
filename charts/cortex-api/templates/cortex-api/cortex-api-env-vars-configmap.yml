@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cortex-api-env-vars-configmap
+  labels:
+    sha: {{.Values.cortex_app.deploy.sha}}
+data:
+  ConnectionStrings__BaseClientConnection: {{.Values.cortex_app.env.ConnectionStrings__BaseClientConnection}}
+  ConnectionStrings__MasterConnection: {{.Values.cortex_app.env.ConnectionStrings__MasterConnection}}
+  ConnectionStrings__DeploymentConnection: {{.Values.cortex_app.env.ConnectionStrings__DeploymentConnection}}
+  ConnectionStrings__AdminConnection: {{.Values.cortex_app.env.ConnectionStrings__AdminConnection}}
