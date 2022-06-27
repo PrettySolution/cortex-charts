@@ -14,7 +14,34 @@ entries:
     urls:
     - https://github.com/PrettySolution/cortex-charts/releases/download/camunda-1.0.0/camunda-1.0.0.tgz
     version: 1.0.0
+  cortex-api:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-27T12:11:10.215917971Z"
+    description: A Helm chart for Kubernetes
+    digest: a60a1b72057aad82c58d1a29e61b78e810e5a011758d1cb3edbda696d9a762dc
+    maintainers:
+    - email: vherman@vf-soft.com
+      name: vherman
+    name: cortex-api
+    type: application
+    urls:
+    - https://github.com/PrettySolution/cortex-charts/releases/download/cortex-api-1.0.0/cortex-api-1.0.0.tgz
+    version: 1.0.0
   cortex-app:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-27T12:11:10.33239658Z"
+    description: A Helm chart for Kubernetes
+    digest: d7a86eb44ad29e9b8db74e1a9f4ebd02a0c9f6fc890f82538ff5a01618378f83
+    maintainers:
+    - email: vherman@vf-soft.com
+      name: vherman
+    name: cortex-app
+    type: application
+    urls:
+    - https://github.com/PrettySolution/cortex-charts/releases/download/cortex-app-1.0.2/cortex-app-1.0.2.tgz
+    version: 1.0.2
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-06-27T11:38:49.273841065Z"
@@ -54,4 +81,4 @@ entries:
     urls:
     - https://github.com/PrettySolution/cortex-charts/releases/download/cortex-app-0.1.1/cortex-app-0.1.1.tgz
     version: 0.1.1
-generated: "2022-06-27T11:38:49.273903665Z"
+generated: "2022-06-27T12:11:10.332410979Z"
