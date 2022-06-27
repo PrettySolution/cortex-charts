@@ -6,9 +6,9 @@ cortex_app:
 
   image:
     camunda:
-      repository: ""
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-camunda:7.15.14"
     cortex_cli:
-      repository: ""
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-cli:1.3.93"
       pullPolicy: Always
 
   env:
@@ -18,8 +18,8 @@ cortex_app:
     ConnectionStrings__AdminConnection: ""
 
   camunda:
-    spring_profiles_active: sqlserver  # to activate application-sqlserver.properties
-    datasource_url: "" # jdbc:sqlserver://example.com:1433;databaseName=camunda
+    spring_profiles_active: sqlserver
+    datasource_url: ""
     datasource_username: ""
     datasource_password: ""
     cortex_cli_sysscan_cron_schedule: ""
