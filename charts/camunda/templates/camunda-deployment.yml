@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: camunda
+  labels:
+    app: camunda
+spec:
+  replicas: {{.Values.cortex_app.camunda.replicas}}
+  selector:
+    matchLabels:
+      app: camunda
+  template:
+    metadata:
+      labels:
+        sidecar.istio.io/inject: "true"
+        app: camunda
+        sha: {{.Values.cortex_app.deploy.sha}}
+    spec:
+      serviceAccountName: camunda-sa
+#      volumes:
+#        - name: camunda-h2-database
+#          persistentVolumeClaim:
+#            claimName: camunda-h2-pvc
+      containers:
+        - name: camunda
+          imagePullPolicy: Always
+          image: {{.Values.cortex_app.image.camunda.repository}}
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DEFAULT_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          envFrom:
+            - configMapRef:
+                name: camunda-env-vars-configmap
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /camunda/health
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /camunda/health
+#          volumeMounts:
+#            - name: camunda-h2-database
+#              mountPath: /h2

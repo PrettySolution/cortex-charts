@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: camunda-env-vars-configmap
+  labels:
+    sha: {{.Values.cortex_app.deploy.sha}}
+data:
+{{/*  imagePullSecretsName: {{.Values.imagePullSecret}}*/}}
+  spring_profiles_active: {{.Values.cortex_app.camunda.spring_profiles_active}}  # to activate application-sqlserver.properties
+  datasource_url: {{.Values.cortex_app.camunda.datasource_url}}
+  datasource_username: {{.Values.cortex_app.camunda.datasource_username}}
+  datasource_password: {{.Values.cortex_app.camunda.datasource_password}}
+  cortex_cli_image: {{.Values.cortex_app.image.cortex_cli.repository}}
+  imagePullPolicy: {{.Values.cortex_app.image.cortex_cli.pullPolicy}}
