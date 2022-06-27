@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: cortex-api-vs
+spec:
+  hosts:
+    - api.{{.Values.cortex_app.dnsZone}}
+  gateways:
+    - istio-ingress/ingressgateway
+  http:
+    - route:
+        - destination:
+            host: cortex-api-service
+            port:
+              number: 80
