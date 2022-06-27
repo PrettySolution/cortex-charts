@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mssqlserver-service
+spec:
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: {{.Values.cortex_app.env.DB_PORT}}
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  # the name here should match the name of the Service
+  name: mssqlserver-service
+subsets:
+  - addresses:
+      - ip: {{.Values.cortex_app.env.DB_IP_A}}
+    ports:
+      - port: {{.Values.cortex_app.env.DB_PORT}}

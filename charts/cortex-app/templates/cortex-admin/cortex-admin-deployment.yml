@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cortex-admin-deployment
+  labels:
+    app: cortex-admin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cortex-admin
+  template:
+    metadata:
+      labels:
+        sidecar.istio.io/inject: "true"
+        app: cortex-admin
+        sha: {{.Values.cortex_app.deploy.sha}}
+    spec:
+      containers:
+        - name: cortex-admin
+          imagePullPolicy: Always
+          image: {{.Values.cortex_app.image.cortex_admin.repository}}
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: mntdatas3fs
+              mountPath: /app/data
+            - mountPath: /bin/app/License.lic
+              subPath: License.lic
+              name: license-volume
+          envFrom:
+            - configMapRef:
+                name: cortex-admin-env-vars-configmap
+          readinessProbe:
+            httpGet:
+              port: 80
+              path: /api/Health
+          livenessProbe:
+            httpGet:
+              port: 80
+              path: /api/Health
+
+      volumes:
+        - name: mntdatas3fs
+          hostPath:
+            path: /mnt/cortex-demo-data
+        - name: license-volume
+          secret:
+            secretName: cortex-admin-secret
+            items:
+              - key: License.lic
+                path: License.lic

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cortex-qm-deployment
+  labels:
+    app: cortex-qm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cortex-qm
+  template:
+    metadata:
+      labels:
+        sidecar.istio.io/inject: "true"
+        app: cortex-qm
+        sha: {{.Values.cortex_app.deploy.sha}}
+    spec:
+      containers:
+        - name: cortex-qm
+          imagePullPolicy: Always
+          image: {{.Values.cortex_app.image.cortex_qm.repository}}
+          ports:
+            - containerPort: 8088
+              name: http
+          envFrom:
+            - configMapRef:
+                name: cortex-qm-env-vars-configmap
+          readinessProbe:
+            httpGet:
+              port: 8088
+              path: /api/v1/health
+          livenessProbe:
+            httpGet:
+              port: 8088
+              path: /api/v1/health
