@@ -1,0 +1,26 @@
+cortex_app:
+  deploy:
+    sha: "sha1"
+
+  lisenceLic: ""
+
+  image:
+    camunda:
+      repository: ""
+    cortex_cli:
+      repository: ""
+      pullPolicy: Always
+
+  env:
+    ConnectionStrings__BaseClientConnection: ""
+    ConnectionStrings__MasterConnection: ""
+    ConnectionStrings__DeploymentConnection: ""
+    ConnectionStrings__AdminConnection: ""
+
+  camunda:
+    spring_profiles_active: sqlserver  # to activate application-sqlserver.properties
+    datasource_url: "" # jdbc:sqlserver://example.com:1433;databaseName=camunda
+    datasource_username: ""
+    datasource_password: ""
+    cortex_cli_sysscan_cron_schedule: ""
+    replicas: 1

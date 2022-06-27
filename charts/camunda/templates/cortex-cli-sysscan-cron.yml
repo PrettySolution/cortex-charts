@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{.Release.Name}}-sysscan
+spec:
+  schedule: "{{.Values.cortex_app.camunda.cortex_cli_sysscan_cron_schedule}}"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: cortex-cron
+              image: {{.Values.cortex_app.image.cortex_cli.repository}}
+              imagePullPolicy: Always
+              command: ["dotnet", "Cortex.dll", "sysscan"]
+              volumeMounts:
+                - name: mntdatas3fs
+                  mountPath: /app/data
+                - mountPath: /bin/app/License.lic
+                  subPath: License.lic
+                  name: license-volume
+              envFrom:
+                - configMapRef:
+                    name: cortex-cli-env-vars-configmap
+          volumes:
+            - name: mntdatas3fs
+              hostPath:
+                path: /mnt/cortex-demo-data
+            - name: license-volume
+              secret:
+                secretName: admin-cli-license-lic
+                items:
+                  - key: License.lic
+                    path: License.lic

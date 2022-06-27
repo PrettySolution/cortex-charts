@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cortex-cli-env-vars-configmap
+data:
+  ConnectionStrings__BaseClientConnection: {{.Values.cortex_app.env.ConnectionStrings__BaseClientConnection}}
+  ConnectionStrings__MasterConnection: {{.Values.cortex_app.env.ConnectionStrings__MasterConnection}}
+  ConnectionStrings__DeploymentConnection: {{.Values.cortex_app.env.ConnectionStrings__DeploymentConnection}}
+  ConnectionStrings__AdminConnection: {{.Values.cortex_app.env.ConnectionStrings__AdminConnection}}
