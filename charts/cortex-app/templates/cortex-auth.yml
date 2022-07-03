@@ -33,14 +33,14 @@ spec:
         - key: request.auth.claims[iss]
           values:
             - {{.Values.cortex_app.OIDC_ISSUER_URL}}  # $OIDC_ISSUER_URL
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: allow-swagger
-spec:
-  action: ALLOW
-  rules:
-    - to:
-        - operation:
-            paths: [ "/swagger*" ]
+#---
+#apiVersion: security.istio.io/v1beta1
+#kind: AuthorizationPolicy
+#metadata:
+#  name: allow-swagger
+#spec:
+#  action: ALLOW
+#  rules:
+#    - to:
+#        - operation:
+#            paths: [ "/swagger*" ]
