@@ -3,6 +3,19 @@ entries:
   camunda:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-07-03T18:00:56.503755901Z"
+    description: A Helm chart for Kubernetes
+    digest: 98495d9bf48286b503a0fa015434ea0eab2dd840d4b0efb8fd425f72519dafca
+    maintainers:
+    - email: vherman@vf-soft.com
+      name: vherman
+    name: camunda
+    type: application
+    urls:
+    - https://github.com/PrettySolution/cortex-charts/releases/download/camunda-1.0.1/camunda-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-06-27T11:38:49.166277696Z"
     description: A Helm chart for Kubernetes
     digest: 5c244e8b9fd3a341968cc75685bd0c3863ff086467be1c8b3ad63bf558ff6f39
@@ -15,6 +28,19 @@ entries:
     - https://github.com/PrettySolution/cortex-charts/releases/download/camunda-1.0.0/camunda-1.0.0.tgz
     version: 1.0.0
   cortex-api:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-07-03T18:00:56.61883965Z"
+    description: A Helm chart for Kubernetes
+    digest: 001bd53d4076cd6fb4ecd9d5ddc65234e50a17a6be4af904a35e6355ad91f608
+    maintainers:
+    - email: vherman@vf-soft.com
+      name: vherman
+    name: cortex-api
+    type: application
+    urls:
+    - https://github.com/PrettySolution/cortex-charts/releases/download/cortex-api-1.0.2/cortex-api-1.0.2.tgz
+    version: 1.0.2
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-07-03T17:41:25.982283041Z"
@@ -120,4 +146,4 @@ entries:
     urls:
     - https://github.com/PrettySolution/cortex-charts/releases/download/cortex-app-0.1.1/cortex-app-0.1.1.tgz
     version: 0.1.1
-generated: "2022-07-03T17:41:26.232707304Z"
+generated: "2022-07-03T18:00:56.61886265Z"
