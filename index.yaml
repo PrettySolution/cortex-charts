@@ -70,6 +70,19 @@ entries:
   cortex-app:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-07-15T11:48:11.891092595Z"
+    description: A Helm chart for Kubernetes
+    digest: dba087cc52940ef414eae8b006fb7dbb9db3e88e4a03806c3328ec6091bf43c2
+    maintainers:
+    - email: vherman@vf-soft.com
+      name: vherman
+    name: cortex-app
+    type: application
+    urls:
+    - https://github.com/PrettySolution/cortex-charts/releases/download/cortex-app-1.0.5/cortex-app-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-07-03T17:41:26.232684403Z"
     description: A Helm chart for Kubernetes
     digest: 5d75e6de4540e5380c830e917a24c18abfae4c5178b54098ba65462fce375f05
@@ -146,4 +159,4 @@ entries:
     urls:
     - https://github.com/PrettySolution/cortex-charts/releases/download/cortex-app-0.1.1/cortex-app-0.1.1.tgz
     version: 0.1.1
-generated: "2022-07-03T18:00:56.61886265Z"
+generated: "2022-07-15T11:48:11.891143998Z"
