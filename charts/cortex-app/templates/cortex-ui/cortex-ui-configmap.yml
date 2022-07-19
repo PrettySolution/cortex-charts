@@ -15,3 +15,9 @@ data:
         try_files $uri $uri/ /index.html =404;
       }
     }
+  auth-config.json: |
+    {
+      "issuer": "{{.Values.cortex_app.OIDC_ISSUER_URL}}",
+      "clientId": "{{.Values.cortex_app.CLIENT_ID}}",
+      "identityService": "https://login.cortextest.cortexanalytics.com"
+    }

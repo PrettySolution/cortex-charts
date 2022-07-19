@@ -2,21 +2,21 @@ cortex_app:
   deploy:
     sha: "sha1"
 
-  lisenceLic: ""
+  licenseLic: ""
 
   dnsZone: ""
 
   OIDC_ISSUER_URL: ""
   OIDC_JWKS_URI: ""
-  OAUTH2_PROXY_CLIENT_ID: ""
+  CLIENT_ID: ""
 
   image:
     cortex_admin:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-admin:2.4.21"
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-admin:2.4.24"
     cortex_qm:
       repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-qm:2.2.11"
     cortex_ui:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-ui:1.3.17"
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-ui:2.0.13"
 
   env:
 
