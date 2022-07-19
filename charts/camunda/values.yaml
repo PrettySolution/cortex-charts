@@ -2,7 +2,7 @@ cortex_app:
   deploy:
     sha: "sha1"
 
-  lisenceLic: ""
+  licenseLic: ""
 
   image:
     camunda:
