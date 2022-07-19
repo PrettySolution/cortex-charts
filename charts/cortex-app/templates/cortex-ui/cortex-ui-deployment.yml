@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        sidecar.istio.io/inject: "true"
+        sidecar.istio.io/inject: "false"
         app: cortex-ui
         sha: {{.Values.cortex_app.deploy.sha}}
     spec:
@@ -27,6 +27,9 @@ spec:
             - mountPath: /etc/nginx/conf.d/default.conf
               subPath: default.conf
               name: nginx-config
+            - mountPath: /usr/share/nginx/html/assets/bff/auth-config.json
+              subPath: auth-config.json
+              name: auth-config
       volumes:
         - name: nginx-config
           configMap:
@@ -34,3 +37,9 @@ spec:
             items:
               - key: nginx.conf
                 path: default.conf
+        - name: auth-config
+          configMap:
+            name: cortex-ui-configmap
+            items:
+              - key: auth-config.json
+                path: auth-config.json
