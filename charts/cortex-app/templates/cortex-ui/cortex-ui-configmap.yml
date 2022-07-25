@@ -19,5 +19,5 @@ data:
     {
       "issuer": "{{.Values.cortex_app.OIDC_ISSUER_URL}}",
       "clientId": "{{.Values.cortex_app.CLIENT_ID}}",
-      "identityService": "https://login.cortextest.cortexanalytics.com"
+      "identityService": "https://login.{{.Values.cortex_app.dnsZone}}"
     }
