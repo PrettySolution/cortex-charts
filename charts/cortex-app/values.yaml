@@ -12,11 +12,11 @@ cortex_app:
 
   image:
     cortex_admin:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-admin:2.4.24"
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-admin:2.4.25"
     cortex_qm:
       repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-qm:2.2.11"
     cortex_ui:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-ui:2.0.13"
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-ui:2.0.21"
 
   env:
 
