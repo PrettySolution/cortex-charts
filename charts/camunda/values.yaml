@@ -8,7 +8,7 @@ cortex_app:
     camunda:
       repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-camunda:7.15.14"
     cortex_cli:
-      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-cli:1.4.18"
+      repository: "249111255442.dkr.ecr.eu-central-1.amazonaws.com/cortex-cli:1.4.28"
       pullPolicy: Always
 
   env:
